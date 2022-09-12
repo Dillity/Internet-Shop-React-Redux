@@ -1,0 +1,19 @@
+.menuIcon {
+    margin-right: 12px;
+}
+.closeIcon {
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
+    color: white;
+    margin-top: 2px;
+}
+.container {
+    margin: 7px;
+}
+.typography {
+    color: white;
+    margin-left: 15px;
+    padding: 1px;
+    flex-grow: 1;
+}

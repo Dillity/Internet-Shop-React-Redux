@@ -1,0 +1,9 @@
+.list {
+    width: 350px;
+}
+.typography {
+    flex-grow: 1;
+}
+.closeIcon {
+    padding: 1.5px;
+}

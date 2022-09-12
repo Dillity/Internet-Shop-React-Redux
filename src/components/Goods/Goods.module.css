@@ -1,0 +1,14 @@
+.card {
+    width: 350px;
+}
+.itemImage {
+    width: 350px;
+    border-radius: 2%;
+}
+.main {
+    padding: 12px;
+}
+.container {
+    margin-top: 118px;
+    margin-bottom: 50px;
+}

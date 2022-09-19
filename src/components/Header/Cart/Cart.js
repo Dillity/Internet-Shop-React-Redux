@@ -24,7 +24,7 @@ const Cart = (props) => {
         <>
             {/*cart icon*/}
             <IconButton color="inherit" onClick={handleCartClick}>
-                <Badge color="warning" badgeContent={props.order.length}>
+                <Badge color="secondary" badgeContent={props.order.length}>
                     <ShoppingCart/>
                 </Badge>
             </IconButton>

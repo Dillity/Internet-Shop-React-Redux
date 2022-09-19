@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Button, Card, Grid} from "@mui/material";
+import {Button, Card, Grid, Typography} from "@mui/material";
 
 import style from './Goods.module.css';
 
@@ -19,9 +19,9 @@ const GoodsItem = (props) => {
                     <img src={props.img} className={style.itemImage}/>
                 </div>
                 <div className={style.main}>
-                    <h4>{props.name}</h4>
-                    <b>{props.price}£</b>
-                    <p>{props.description}</p>
+                    <Typography className={style.name}>{props.name}</Typography>
+                    <Typography className={style.price}>{props.price}£</Typography>
+                    <Typography className={style.description}>{props.description}</Typography>
                     <Button onClick={() => handleOrder({id: props.id, name: props.name, price: props.price})} size={"small"} variant="contained">
                         Add to cart
                     </Button>

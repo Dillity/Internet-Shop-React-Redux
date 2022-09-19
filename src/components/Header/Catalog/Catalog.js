@@ -1,13 +1,27 @@
 import React, {useState} from "react";
 
-import {Box, Drawer, Grid, IconButton, Typography} from "@mui/material";
+import {
+    Box, Collapse,
+    Drawer,
+    Grid,
+    IconButton,
+    List,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+    Typography
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
+import SmokingRoomsIcon from '@mui/icons-material/SmokingRooms';
 
 import style from "./Catalog.module.css";
+import {ExpandLess, ExpandMore, StarBorder} from "@mui/icons-material";
+import {Navigate, useNavigate} from "react-router-dom";
 
 
 const Catalog = (props) => {
+    let navigate = useNavigate();
 
     const [catalogDrawerOpen, setCatalogDrawerOpen] = useState(false);
 
@@ -15,6 +29,17 @@ const Catalog = (props) => {
         setCatalogDrawerOpen(true);
     }
     const handleCatalogClose = () => {
+        setCatalogDrawerOpen(false);
+    }
+
+    const [open, setOpen] = useState(true);
+
+    const handleClick = () => {
+        setOpen(!open);
+    };
+
+    const handleNavigate = (route) => {
+        navigate(route);
         setCatalogDrawerOpen(false);
     }
 
@@ -28,7 +53,7 @@ const Catalog = (props) => {
                 color="inherit"
                 aria-label="open drawer"
                 onClick={handleCatalogClick}
-                className={style.menuIcon}
+                sx={{mr: 1.5}}
             >
                 <MenuIcon />
             </IconButton>
@@ -49,15 +74,41 @@ const Catalog = (props) => {
                     </Grid>
                     <Grid item md={1} xs={1}>
                         <IconButton edge="start" onClick={handleCatalogClose} className={style.closeIcon}>
-                            <CloseIcon />
+                            <CloseIcon className={style.closeIcon}/>
                         </IconButton>
                     </Grid>
                 </Grid>
             </Box>
+
+            <List>
+                <ListItemButton onClick={handleClick}>
+                    <ListItemIcon>
+                        <SmokingRoomsIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Cigars" />
+                    {open ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={open} timeout="auto" unmountOnExit >
+                    <List component="div" disablePadding>
+                        <ListItemButton sx={{ pl: 4 }} onClick={() => {handleNavigate('bolivar')}}>
+                            <ListItemIcon>
+                                <StarBorder />
+                            </ListItemIcon>
+                            <ListItemText primary="Bolivar" />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pl: 4 }} onClick={() => {handleNavigate('cohiba')}}>
+                            <ListItemIcon>
+                                <StarBorder />
+                            </ListItemIcon>
+                            <ListItemText primary="Cohiba" />
+                        </ListItemButton>
+                    </List>
+                </Collapse>
+            </List>
         </Drawer>
 }
         </>
-    )
+    );
 }
 
 export default Catalog;

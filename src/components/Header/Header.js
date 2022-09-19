@@ -6,9 +6,16 @@ import Cart from "./Cart/Cart";
 import SearchInput from "./Search/Search";
 
 import style from "./Header.module.css";
+import {LoginContainer} from "./Login/LoginContainer";
+import {useNavigate} from "react-router-dom";
 
 
 const Header = (props) => {
+
+    let navigate = useNavigate();
+    const handleNavigate = () => {
+        navigate('/');
+    }
 
     return (
         <AppBar>
@@ -21,12 +28,15 @@ const Header = (props) => {
                     variant="h4"
                     component="span"
                     className={style.typography}
+                    onClick={handleNavigate}
                 >
                     Internet shop
                 </Typography>
 
                 {/*search input*/}
-               <SearchInput searchItems={props.searchItems} />
+                <SearchInput searchItems={props.searchItems}/>
+
+                 <LoginContainer />
 
                 {/*cart*/}
                 <Cart order={props.order} removeOrder={props.removeOrder}/>

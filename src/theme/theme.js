@@ -5,11 +5,20 @@ export const theme = createTheme({
         primary: {
             main: "#181818"
         },
+        warning: {
+            main: "#FF0000"
+        },
+        success: {
+            main: "#00FF00"
+        },
+        secondary: {
+            main: "#FF9001"
+        },
         background: {
             paper: "#EEEEEE"
         }
     },
     typography: {
-        fontFamily: "Work Sans"
+        fontFamily: "Montserrat"
     }
 })

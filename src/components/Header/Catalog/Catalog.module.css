@@ -1,12 +1,13 @@
-.menuIcon {
-    margin-right: 12px;
-}
+/*.menuIcon {*/
+/*    margin-right: 22px;*/
+/*}*/
 .closeIcon {
     width: 30px;
     height: 30px;
     border: 1px solid white;
     color: white;
     margin-top: 2px;
+    border-radius: 50%;
 }
 .container {
     margin: 7px;

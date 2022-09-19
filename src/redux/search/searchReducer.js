@@ -1,38 +1,14 @@
-import {SEARCH_RESULT} from "./searchActionType";
+import {CIGAR, PAGE, SEARCH_RESULT, TOTAL_ITEMS} from "./searchActionType";
+import {cigarsAPI} from "../../api/api";
+import {cigar, pageChange, totalItems} from "./searchActionCreator";
+
 
 let initialState = {
-        items: [
-            {
-                id: 1,
-                name: 'Bolivar Belicosos Finos Cigar - Cabinet Selection - 1 Single',
-                price: 31.99,
-                description: 'Simon Bolivar was one of the great historic figures of the 19th Century who liberated much of South America from Spanish rule.',
-                img: 'https://www.cgarsltd.co.uk/images/thumbs/500x500_BBF_Cabinet3.JPG'
-            },
-            {
-                id: 2,
-                name: 'Bolivar Petit Coronas Cigar - 1 Single',
-                price: 18.99,
-                description: 'Simon Bolivar was one of the great historic figures of the 19th Century who liberated much of South America from Spanish rule.',
-                img: 'https://www.cgarsltd.co.uk/images/thumbs/500x500_BoliPetitCorona_Box66.JPG'
-            },
-            {
-                id: 3,
-                name: 'Bolivar Coronas J Cigar - 1 Single',
-                price: 16.99,
-                description: 'Simon Bolivar was one of the great historic figures of the 19th Century who liberated much of South America from Spanish rule.',
-                img: 'https://www.cgarsltd.co.uk/images/thumbs/500x500_BoliCoroJ_New6.JPG'
-            },
-            {
-                id: 4,
-                name: 'Bolivar Belicosos Finos Cigar - 1 Single in Varnished Slide Lid Box (Coffin)',
-                price: 41.99,
-                description: 'Simon Bolivar was one of the great historic figures of the 19th Century who liberated much of South America from Spanish rule.',
-                img: 'https://www.cgarsltd.co.uk/images/thumbs/500x500_BBF_Cabinet3.JPG'
-            }
-        ],
-
-    filteredItems: []
+    items: [],
+    filteredItems: [],
+    currentPage: 1,
+    totalItemsCount: null,
+    pageLimit: 3
 }
 
 const searchReducer = (state = initialState, action) => {
@@ -45,10 +21,45 @@ const searchReducer = (state = initialState, action) => {
                 })
             }
 
+        case TOTAL_ITEMS:
+            return {
+                ...state,
+                totalItemsCount: action.total
+            }
+
+        case CIGAR:
+            return {
+                ...state,
+                items: action.items
+            }
+
+        case PAGE:
+            return {
+                ...state,
+                currentPage: parseInt(action.page)
+            }
+
         default:
             return state;
     }
 }
+
 export default searchReducer;
+
+export const bolivar = (currentPage) => (dispatch) => {
+    cigarsAPI.bolivar(currentPage).then(response => {
+        dispatch(totalItems(response.data.totalDocs));
+        dispatch(cigar(response.data.docs));
+    });
+}
+export const cohiba = (currentPage) => (dispatch) => {
+    cigarsAPI.cohiba(currentPage).then(response => {
+        dispatch(totalItems(response.data.totalDocs));
+        dispatch(cigar(response.data.docs));
+    });
+}
+export const onPageChange = (p) => (dispatch) => {
+    dispatch(pageChange(p));
+}
 
 

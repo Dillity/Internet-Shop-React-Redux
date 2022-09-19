@@ -1,0 +1,2 @@
+export const SERVER_MESSAGE_REG = 'SERVER_MESSAGE_REG';
+export const IS_FETCHING = 'IS_FETCHING';

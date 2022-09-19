@@ -1,13 +1,9 @@
 import React from "react";
 import {loginAPI} from "../../api/api";
+import {EMAIL, IS_FETCHING, LOGIN_STATUS, OPEN_SNACKBAR, SECRET_ROUTING, SERVER_MESSAGE_LOG} from "./loginType";
+import {emailLogin, isFetchingProgress, loginStatusChange, serverMessageLog, setSnackbar} from "./loginAction";
 
 
-const EMAIL = 'EMAIL';
-const SERVER_MESSAGE_LOG = 'SERVER_MESSAGE_LOG';
-const LOGIN_STATUS = 'LOGIN_STATUS';
-const IS_FETCHING = 'IS_FETCHING';
-const SECRET_ROUTING = 'SECRET_ROUTING';
-const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 
 let initialState = {
     email: null,
@@ -60,11 +56,6 @@ const loginReducer = (state = initialState, action) => {
     }
 }
 
-export const emailLogin = (email) => ({type: EMAIL, email});
-export const serverMessageLog = (message) => ({type: SERVER_MESSAGE_LOG, message});
-export const loginStatusChange = (status) => ({type: LOGIN_STATUS, status});
-export const isFetchingProgress = (status) => ({type: IS_FETCHING, status});
-export const setSnackbar = (status) => ({type: OPEN_SNACKBAR, status});
 
 export const logIn = (email, password) => (dispatch) => {
     dispatch(isFetchingProgress(true));

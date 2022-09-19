@@ -1,9 +1,6 @@
 import {registerAPI} from "../../api/api";
-
-
-const SERVER_MESSAGE_REG = 'SERVER_MESSAGE_REG';
-const IS_FETCHING = 'IS_FETCHING';
-
+import {IS_FETCHING, SERVER_MESSAGE_REG} from "./registrationType";
+import {isFetchingProgress, serverMessageReg} from "./registrationAction";
 
 let initialState = {
     serverMessageReg: '',
@@ -30,8 +27,7 @@ const registrationReducer = (state = initialState, action) => {
     }
 }
 
-export const serverMessageReg = (message) => ({type: SERVER_MESSAGE_REG, message});
-export const isFetchingProgress = (status) => ({type: IS_FETCHING, status});
+
 
 export const register = (email, password) => (dispatch) => {
     dispatch(isFetchingProgress(true));

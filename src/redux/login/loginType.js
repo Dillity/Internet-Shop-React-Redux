@@ -1,0 +1,7 @@
+
+export const EMAIL = 'EMAIL';
+export const SERVER_MESSAGE_LOG = 'SERVER_MESSAGE_LOG';
+export const LOGIN_STATUS = 'LOGIN_STATUS';
+export const IS_FETCHING = 'IS_FETCHING';
+export const SECRET_ROUTING = 'SECRET_ROUTING';
+export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';

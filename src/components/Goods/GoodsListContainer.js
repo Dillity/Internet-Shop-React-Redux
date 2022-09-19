@@ -13,9 +13,9 @@ import {
     getSnackbarStatus,
     getTotalItems
 } from "../../selectors/selectors";
-import {setSnackbar} from "../../redux/login/loginReducer";
 import {bolivar, cohiba, onPageChange} from "../../redux/search/searchReducer";
 import {useParams} from "react-router-dom";
+import {setSnackbar} from "../../redux/login/loginAction";
 
 
 

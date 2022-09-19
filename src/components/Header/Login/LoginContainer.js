@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 
-import {logIn, loginStatusChange} from "../../../redux/login/loginReducer";
+import {logIn} from "../../../redux/login/loginReducer";
 import {register} from "../../../redux/registration/registrationReducer";
 
 import {
@@ -11,6 +11,7 @@ import {
     getServerMessageReg
 } from "../../../selectors/selectors";
 import LoginPage from "./LoginPage";
+import {loginStatusChange} from "../../../redux/login/loginAction";
 
 let mapStateToProps = (state) => {
     return {
